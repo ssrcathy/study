@@ -18,9 +18,9 @@ git config --unset http.proxy
 > 因为我的代理是局部代理，只有浏览器设置会走代理，所以其余相关软件不会走代理，所以直接将clash设置为系统代理就解决了该问题。
 
 ## leetCode
-- 排序
-  冒泡排序
+- 冒泡排序
+
 
 ## vue相关
 
-
+/Users/liuyue/Documents/GitHub/study
