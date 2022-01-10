@@ -27,15 +27,27 @@
 // console.log(employee.firstName)
 // console.log(employee.lastName)
 // console.log(employee.sayHi())
-var drummer = {};
-drummer.age = 17;
-drummer.instrument = "piano";
-console.log("年龄：" + drummer.age);
-console.log("喜欢的乐器：" + drummer.instrument);
-var child1 = { name: "bob", age: "23", idNumber: "10002", instrument: "piano", language: 'english' };
-console.log('childName:' + child1.name);
-console.log('childAge:' + child1.age);
-console.log('childIdNumber:' + child1.idNumber);
-console.log('childInstrument:' + child1.instrument);
-console.log('childLanguage:' + child1.language);
+// 创建实例的函数
+function CreateClock(ctor, hour, minute) {
+    return new ctor(hour, minute);
+}
+var DigitalClock = /** @class */ (function () {
+    function DigitalClock(h, m) {
+    }
+    DigitalClock.prototype.tick = function () {
+        console.log("deep beep");
+    };
+    return DigitalClock;
+}());
+var AnalogClock = /** @class */ (function () {
+    function AnalogClock(h, m) {
+    }
+    AnalogClock.prototype.tick = function () {
+        console.log("tick tock");
+        ß;
+    };
+    return AnalogClock;
+}());
+var digital = CreateClock(DigitalClock, 12, 17);
+var analog = CreateClock(AnalogClock, 7, 23);
 //# sourceMappingURL=interfaceTest.js.map

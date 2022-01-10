@@ -75,32 +75,75 @@
 
 //继承----------------------
 //单继承实例
-interface Person {
-    age:number
-}
-interface Musician extends Person{
-    instrument:string
-}
-
-var drummer = <Musician>{};
-
-drummer.age = 17
-drummer.instrument = "piano"
-console.log("年龄："+drummer.age)
-console.log("喜欢的乐器："+drummer.instrument)
+// interface Person {
+//     age:number
+// }
+// interface Musician extends Person{
+//     instrument:string
+// }
+//
+// var drummer = <Musician>{};
+//
+// drummer.age = 17
+// drummer.instrument = "piano"
+// console.log("年龄："+drummer.age)
+// console.log("喜欢的乐器："+drummer.instrument)
 
 //多继承实现
-interface IPname {
-    name:string;
-    idNumber:number
+// interface IPname {
+//     name:string;
+//     idNumber:number
+// }
+// interface child extends Person,Musician,IPname {
+//     language:string,
+// }
+//
+// var child1:child={name:"bob",age:"23",idNumber:"10002",instrument:"piano",language:'english'}
+// console.log('childName:'+child1.name)
+// console.log('childAge:'+child1.age)
+// console.log('childIdNumber:'+child1.idNumber)
+// console.log('childInstrument:'+child1.instrument)
+// console.log('childLanguage:'+child1.language)
+
+//类类型
+//类静态部分与实例部分的区别
+// interface ClockInterface{
+//     new (hour:number,minute:number);
+// }
+// class Clock implements ClockInterface{
+//     currentTime:Date;
+//     constructor(h:number,m:number){
+//     }
+// }
+
+//constructor处于类的静态部分，所以不在检查范围内
+//以为我们应该直接操作类的静态部分，定义两个接口用于分别操作构造函数和实例方法
+//构造函数所用
+interface ClockConstructor{
+    new (hour:number,minute:number):ClockInterface
 }
-interface child extends Person,Musician,IPname {
-    language:string,
+//实例方法所用
+interface ClockInterface {
+    tick()
 }
 
-var child1:child={name:"bob",age:"23",idNumber:"10002",instrument:"piano",language:'english'}
-console.log('childName:'+child1.name)
-console.log('childAge:'+child1.age)
-console.log('childIdNumber:'+child1.idNumber)
-console.log('childInstrument:'+child1.instrument)
-console.log('childLanguage:'+child1.language)
+// 创建实例的函数
+function CreateClock(ctor:ClockConstructor,hour:number,minute:number) : ClockInterface{
+    return new ctor(hour,minute);
+}
+ class  DigitalClock implements ClockInterface{
+    constructor(h:number,m:number){}
+    tick(){
+        console.log("deep beep");
+    }
+
+ }
+class AnalogClock implements ClockInterface{
+    constructor(h:number,m:number){}
+    tick(){
+        console.log("tick tock");ß
+    }
+}
+
+let digital = CreateClock(DigitalClock,12,17);
+let analog = CreateClock(AnalogClock,7,23)
