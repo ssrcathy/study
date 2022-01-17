@@ -136,7 +136,6 @@ function CreateClock(ctor:ClockConstructor,hour:number,minute:number) : ClockInt
     tick(){
         console.log("deep beep");
     }
-
  }
 class AnalogClock implements ClockInterface{
     constructor(h:number,m:number){}
